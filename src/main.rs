@@ -4,7 +4,7 @@ use finitelib::prelude::*;
 
 
 // Bit integer type
-type BigInt = bigi_of_bits!(2048);
+type BigInt = bigi_of_bits!(8192);
 
 
 // Decimal datatype that keeps N digits after the dot
@@ -69,10 +69,10 @@ impl<const N: usize> Decimal<N> {
 fn main() {
     // Number of iterations
     const SQRT2_ITERATIONS: u64 = 20;
-    const PI_ITERATIONS: u64 = 400;
+    const PI_ITERATIONS: u64 = 1500;
 
     // Decimal for 300 digits
-    type Dec = Decimal<300>;
+    type Dec = Decimal<1000>;
 
     // Calculate sqrt2 by the Newton's method
     let sqrt2 = {
