@@ -22,6 +22,14 @@ impl<const N: usize> Display for Decimal<N> {
 }
 
 
+// Convert from u64
+impl<const N: usize> From<u64> for Decimal<N> {
+    fn from(x: u64) -> Self {
+        Self::new(&BigInt::from(x))
+    }
+}
+
+
 impl<const N: usize> Decimal<N> {
     // Constructor from Bigi
     pub fn new(x: &BigInt) -> Self {
@@ -35,11 +43,6 @@ impl<const N: usize> Decimal<N> {
             x.mul_unit(10);
         }
         x
-    }
-
-    // From u64
-    pub fn from(x: u64) -> Self {
-        Self::new(&BigInt::from(x))
     }
 
     // Operation add
@@ -71,7 +74,7 @@ fn main() {
     const SQRT2_ITERATIONS: u64 = 20;
     const PI_ITERATIONS: u64 = 1500;
 
-    // Decimal for 300 digits
+    // Decimal for 1000 digits
     type Dec = Decimal<1000>;
 
     // Calculate sqrt2 by the Newton's method
